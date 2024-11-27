@@ -1,0 +1,603 @@
+1.	Write a program to count total number of negative numbers in an array./
+#include <stdio.h>
+
+int main()
+{
+    int arr[]= {1,-2,3,-4,5,-6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int count = 0;
+    
+    for (int i =0; i<size; i++){
+        if (arr[i]<0){
+            count++;
+        }
+    }
+    
+    printf("Total number of negative numbers : %d\n",count);
+
+    return 0;
+}
+/2.Write a program that takes 5 integers as input from the user and print Max of all the numbers./
+#include <stdio.h>
+
+int main() {
+    int numbers[5];  // Array to store 5 integers
+    int max;         // Variable to hold the maximum value
+
+    // Read 5 integers from the user
+    for (int i = 0; i < 5; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+
+    // Assume the first number is the maximum
+    max = numbers[0];
+
+    // Compare each number with max and update max if needed
+    for (int i = 1; i < 5; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i];
+        }
+    }
+
+    // Print the maximum number
+    printf("The maximum number is: %d\n", max);
+
+    return 0;  // End of the program
+}
+/3.	Write a program to merge two sorted arrays to a third array./
+#include <stdio.h>
+
+int main() {
+    int arr1[] = {1, 3, 5, 7}; // First sorted array
+    int arr2[] = {2, 4, 6, 8}; // Second sorted array
+    int merged[8]; // Array to store the merged result
+    int size1 = sizeof(arr1) / sizeof(arr1[0]); // Size of the first array
+    int size2 = sizeof(arr2) / sizeof(arr2[0]); // Size of the second array
+    int i = 0, j = 0, k = 0; // Indices for arr1, arr2, and merged arrays
+
+    // Merge arrays
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            merged[k++] = arr1[i++];
+        } else {
+            merged[k++] = arr2[j++];
+        }
+    }
+
+    // Copy remaining elements of arr1, if any
+    while (i < size1) {
+        merged[k++] = arr1[i++];
+    }
+
+    // Copy remaining elements of arr2, if any
+    while (j < size2) {
+        merged[k++] = arr2[j++];
+    }
+
+    // Print the merged array
+    printf("Merged array: ");
+    for (int m = 0; m < size1 + size2; m++) {
+        printf("%d ", merged[m]);
+    }
+    printf("\n");
+
+    return 0; // End of the program
+}
+/*4.	Write a program that takes 7 integers as input from the user 
+then Reverse the order of numbers in the array, then print the numbers.*/
+#include <stdio.h>
+
+int main() {
+    int numbers[7];  // Array to store 7 integers
+    int temp;        // Temporary variable for swapping
+    int size = 7;    // Number of elements in the array
+
+    // Input 7 integers from the user
+    printf("Enter 7 integers:\n");
+    for (int i = 0; i < size; i++) {
+        printf("Number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+
+    // Reverse the order of the numbers
+    for (int i = 0; i < size / 2; i++) {
+        temp = numbers[i];                // Store the current element in temp
+        numbers[i] = numbers[size - 1 - i]; // Swap with the corresponding element from the end
+        numbers[size - 1 - i] = temp;     // Place temp in the end element
+    }
+
+    // Print the reversed array
+    printf("Reversed array:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+
+    return 0;  // End of the program
+}
+/*5.	Write a program that takes 5 integers as input from the user 
+and finds out if the order of numbers in array is palindrome
+e.g. 
+if input numbers are 44 56 56 44 then the array is in palindrome order
+if input numbers are 44 53 156 44 then the array is not in palindrome order.*/
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int numbers[5];  // Array to store 5 integers
+    int size = 5;    // Number of elements in the array
+    bool isPalindrome = true; // Variable to check if the array is a palindrome
+
+    // Input 5 integers from the user
+    printf("Enter 5 integers:\n");
+    for (int i = 0; i < size; i++) {
+        printf("Number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+
+    // Check if the array is a palindrome
+    for (int i = 0; i < size / 2; i++) {
+        if (numbers[i] != numbers[size - 1 - i]) {
+            isPalindrome = false; // If any pair of elements does not match
+            break; // No need to check further
+        }
+    }
+
+    // Print whether the array is a palindrome
+    if (isPalindrome) {
+        printf("The array is a palindrome.\n");
+    } else {
+        printf("The array is not a palindrome.\n");
+    }
+
+    return 0; // End of the program
+}
+/*6.Write a program to search a number (taken as input from user) in an array 
+then print the index of the first occurrence of the input number in the array
+If the input number is not present in the array then print -1*/
+#include <stdio.h>
+
+int main() {
+    int numbers[5] = {10, 20, 30, 40, 50}; // Array with predefined values
+    int searchNumber;  // Number to search for
+    int index = -1;    // To store the index of the first occurrence (default is -1)
+    int size = 5;      // Number of elements in the array
+
+    // Input the number to search for
+    printf("Enter the number to search: ");
+    scanf("%d", &searchNumber);
+
+    // Search for the number in the array
+    for (int i = 0; i < size; i++) {
+        if (numbers[i] == searchNumber) {
+            index = i; // Update index with the position of the first occurrence
+            break;    // Exit the loop as we found the number
+        }
+    }
+
+    // Print the result
+    if (index == -1) {
+        printf("Number not found.\n");
+    } else {
+        printf("Number found at index: %d\n", index);
+    }
+
+    return 0; // End of the program
+}
+/7.	Write a program to print all unique numbers in an array./
+#include <stdio.h>
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 4, 5, 1, 6}; // Example array
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int unique[size]; // Array to hold unique numbers
+    int count = 0;
+
+    for (int i = 0; i < size; i++) {
+        int j;
+        for (j = 0; j < count; j++) {
+            if (arr[i] == unique[j]) {
+                break; // Not unique
+            }
+        }
+        if (j == count) { // If no match was found
+            unique[count++] = arr[i]; // Add to unique array
+        }
+    }
+
+    printf("Unique numbers in the array: ");
+    for (int i = 0; i < count; i++) {
+        printf("%d ", unique[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+/8.	Write a program to count frequency of each number in an array./
+#include <stdio.h>
+
+int main() {
+    int arr[] = {1, 2, 2, 3, 4, 4, 4, 5}; // Example array
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int frequency[100] = {0}; // Assuming numbers are between 0 and 99
+
+    // Count frequency of each number
+    for (int i = 0; i < size; i++) {
+        frequency[arr[i]]++;
+    }
+
+    // Print the frequency of each number
+    printf("Number | Frequency\n");
+    printf("---------------------\n");
+    for (int i = 0; i < 100; i++) {
+        if (frequency[i] > 0) {
+            printf("%6d | %9d\n", i, frequency[i]);
+        }
+    }
+
+    return 0;
+}
+/9.	Write a program to count total number of duplicate numbers in an array./
+#include <stdio.h>
+
+int main() {
+    int arr[] = {1, 2, 2, 3, 4, 4, 4, 5}; // Example array
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int count = 0;
+
+    // To keep track of counted duplicates
+    int counted[size]; 
+    int index = 0;
+
+    for (int i = 0; i < size; i++) {
+        // Skip already counted numbers
+        int isDuplicate = 0;
+        for (int j = 0; j < index; j++) {
+            if (arr[i] == counted[j]) {
+                isDuplicate = 1;
+                break;
+            }
+        }
+        
+        if (!isDuplicate) {
+            // Check for duplicates
+            int freq = 0;
+            for (int j = i; j < size; j++) {
+                if (arr[i] == arr[j]) {
+                    freq++;
+                }
+            }
+            if (freq > 1) {
+                counted[index++] = arr[i]; // Mark as counted
+                count += freq; // Add to total duplicates
+            }
+        }
+    }
+
+    printf("Total number of duplicate numbers: %d\n", count);
+
+    return 0;
+}
+/9.	Write a program to count total number of duplicate numbers in an array./
+#include <stdio.h>
+
+int main() {
+    int arr[] = {1, 2, 2, 3, 4, 4, 4, 5}; // Example array
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int count = 0;
+
+    // To keep track of counted duplicates
+    int counted[size]; 
+    int index = 0;
+
+    for (int i = 0; i < size; i++) {
+        // Skip already counted numbers
+        int isDuplicate = 0;
+        for (int j = 0; j < index; j++) {
+            if (arr[i] == counted[j]) {
+                isDuplicate = 1;
+                break;
+            }
+        }
+        
+        if (!isDuplicate) {
+            // Check for duplicates
+            int freq = 0;
+            for (int j = i; j < size; j++) {
+                if (arr[i] == arr[j]) {
+                    freq++;
+                }
+            }
+            if (freq > 1) {
+                counted[index++] = arr[i]; // Mark as counted
+                count += freq; // Add to total duplicates
+            }
+        }
+    }
+
+    printf("Total number of duplicate numbers: %d\n", count);
+
+    return 0;
+}
+/*11.	write a function in C to print following pattern
+
+Note: Only number of rows shall be the input parameter to the function
+
+Right triangle
+
+*
+**
+***
+****
+*****
+*/
+#include <stdio.h>
+
+void printRightTriangle(int rows) {
+    for (int i = 1; i <= rows; i++) {
+        // Print stars for each row
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line
+    }
+}
+
+int main() {
+    int rows;
+    
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    // Print the right triangle
+    printRightTriangle(rows);
+
+    return 0;
+}
+/*12.	write a function in C to print following pattern
+
+Note: Only number of columns will be the input parameter to the function
+
+Half diamond
+
+*
+**
+***
+****
+*****
+****
+***
+**
+*
+*/
+#include <stdio.h>
+
+void printHalfDiamond(int columns) {
+    // Print the upper part of the half diamond
+    for (int i = 1; i <= columns; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line
+    }
+    
+    // Print the lower part of the half diamond
+    for (int i = columns - 1; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line
+    }
+}
+
+int main() {
+    int columns;
+    
+    // Input number of columns
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
+
+    // Print the half diamond
+    printHalfDiamond(columns);
+
+    return 0;
+}
+/*13.	write a function in C to print following pattern
+
+Note: Only odd number of rows will be the input parameter to the function. If the number of rows is even then print an error and return false else return true.
+
+Diamond
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+*/
+#include <stdio.h>
+#include <stdbool.h>
+
+bool printDiamond(int rows) {
+    // Check if rows is odd
+    if (rows % 2 == 0) {
+        printf("Error: Number of rows must be odd.\n");
+        return false;
+    }
+
+    int spaces = rows / 2;
+
+    // Print the upper part of the diamond
+    for (int i = 1; i <= rows; i += 2) {
+        // Print leading spaces
+        for (int j = 0; j < spaces; j++) {
+            printf(" ");
+        }
+        spaces--; // Decrease spaces for the next row
+
+        // Print stars
+        for (int j = 0; j < i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line
+    }
+
+    spaces = 1; // Reset spaces for the lower part
+
+    // Print the lower part of the diamond
+    for (int i = rows - 2; i >= 1; i -= 2) {
+        // Print leading spaces
+        for (int j = 0; j < spaces; j++) {
+            printf(" ");
+        }
+        spaces++; // Increase spaces for the next row
+
+        // Print stars
+        for (int j = 0; j < i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to the next line
+    }
+
+    return true;
+}
+
+int main() {
+    int rows;
+
+    // Input number of rows
+    printf("Enter an odd number of rows: ");
+    scanf("%d", &rows);
+
+    // Print the diamond pattern
+    if (printDiamond(rows)) {
+        printf("Diamond printed successfully.\n");
+    }
+
+    return 0;
+}
+/*14.	write a function in C to print following pattern 
+
+Note: Number of rows and columns shall be the input parameters to the function
+
+12345
+54321
+12345
+54321
+12345
+*/
+#include <stdio.h>
+
+void printPattern(int rows, int columns) {
+    for (int i = 0; i < rows; i++) {
+        // Print ascending or descending numbers based on row index
+        if (i % 2 == 0) { // Even rows
+            for (int j = 1; j <= columns; j++) {
+                printf("%d", j);
+            }
+        } else { // Odd rows
+            for (int j = columns; j >= 1; j--) {
+                printf("%d", j);
+            }
+        }
+        printf("\n"); // Move to the next line
+    }
+}
+
+int main() {
+    int rows, columns;
+
+    // Input number of rows and columns
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
+
+    // Print the pattern
+    printPattern(rows, columns);
+
+    return 0;
+}
+/*15.	write a function in C to print following pattern 
+
+Note: Number of rows and columns shall be the input parameters to the function
+
+11111
+10001
+10001
+10001
+11111
+*/
+#include <stdio.h>
+
+void printPattern(int rows, int columns) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            // Print 1 for the first and last row or column
+            if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1) {
+                printf("1");
+            } else {
+                printf("0");
+            }
+        }
+        printf("\n"); // Move to the next line
+    }
+}
+
+int main() {
+    int rows, columns;
+
+    // Input number of rows and columns
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &columns);
+
+    // Print the pattern
+    printPattern(rows, columns);
+
+    return 0;
+}
+/*16.	write a function in C to print following pattern 
+
+Note: number of rows shall be the input parameter to the function.
+
+12345
+23455
+34555
+45555
+55555
+*/
+#include <stdio.h>
+
+void printPattern(int rows) {
+    for (int i = 0; i < rows; i++) {
+        // Print the increasing numbers
+        for (int j = 1; j <= rows; j++) {
+            if (j <= i) {
+                printf("5"); // Print '5' for the last few columns
+            } else {
+                printf("%d", j + i); // Print increasing numbers
+            }
+        }
+        printf("\n"); // Move to the next line
+    }
+}
+
+int main() {
+    int rows;
+
+    // Input number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    // Print the pattern
+    printPattern(rows);
+
+    return 0;
+}
