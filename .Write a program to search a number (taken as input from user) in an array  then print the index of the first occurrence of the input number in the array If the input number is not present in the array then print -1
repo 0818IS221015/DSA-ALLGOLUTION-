@@ -1,0 +1,27 @@
+*6.Write a program to search a number (taken as input from user) in an array 
+then print the index of the first occurrence of the input number in the array
+If the input number is not present in the array then print -1*/
+#include <stdio.h>
+int main() {
+    int numbers[5] = {10, 20, 30, 40, 50}; // Array with predefined values
+    int searchNumber;  // Number to search for
+    int index = -1;    // To store the index of the first occurrence (default is -1)
+    int size = 5;      // Number of elements in the array
+    // Input the number to search for
+    printf("Enter the number to search: ");
+    scanf("%d", &searchNumber);
+    // Search for the number in the array
+    for (int i = 0; i < size; i++) {
+        if (numbers[i] == searchNumber) {
+            index = i; // Update index with the position of the first occurrence
+            break;    // Exit the loop as we found the number
+        }
+    }
+    // Print the result
+    if (index == -1) {
+        printf("Number not found.\n");
+    } else {
+        printf("Number found at index: %d\n", index);
+    }
+    return 0; // End of the program
+}
